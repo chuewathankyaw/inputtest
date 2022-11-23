@@ -1,26 +1,71 @@
-import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
-import { useEffect } from "react";
-export default function Forminput() {
-  return (
-    <section>
-      <div>
-        <h1>Posts</h1>
-      </div>
+import {
+  Box,
+  Container,
+  Grid,
+  InputAdornment,
+  Stack,
+  TextField,
+} from "@mui/material";
+import { useState } from "react";
+import "./input.css";
 
-      <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Box width="95%%">
-            <Card sx={{ width: "95%" }}>
-              <CardContent>
-                <Typography gutterBottom variant="h3" component="div">
-                  Title
-                </Typography>
-                <Typography variant="body1">Context </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-        </Grid>
-      </Grid>
-    </section>
+export default function Forminput() {
+  const [value, setvalue] = useState("");
+
+  return (
+    <>
+      <div>
+        <h1>Input Post</h1>
+      </div>
+      <Box marginTop={5}>
+        <div className="imput">
+          <Container>
+            <Grid container my={4} direction="row" spacing={4}>
+              <Grid item xs={12}>
+                <TextField
+                  label="id"
+                  required
+                  value={value}
+                  onChange={(e) => setvalue(e.target.value)}
+                  helperText={
+                    !value
+                      ? "Required"
+                      : "Do not share your password with anyone"
+                  }
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Title"
+                  required
+                  value={value}
+                  onChange={(e) => setvalue(e.target.value)}
+                  helperText={
+                    !value
+                      ? "Required"
+                      : "Do not share your password with anyone"
+                  }
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="Desc"
+                  required
+                  value={value}
+                  onChange={(e) => setvalue(e.target.value)}
+                  //   error={!value}
+                  helperText={
+                    !value
+                      ? "Required"
+                      : "Do not share your password with anyone"
+                  }
+                />
+              </Grid>
+            </Grid>
+          </Container>
+          <Stack direction="row" spacing={2}></Stack>
+        </div>
+      </Box>
+    </>
   );
 }
