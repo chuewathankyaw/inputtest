@@ -5,7 +5,6 @@ import "./input.css"
 
 
 export const Forminput = () => {
-      const [value, setvalue] = useState("");
 
     return (
       <Box marginTop={5}>
@@ -16,40 +15,20 @@ export const Forminput = () => {
                 <TextField
                   label="id"
                   required
-                  value={value}
-                  onChange={(e) => setvalue(e.target.value)}
-                  helperText={
-                    !value
-                      ? "Required"
-                      : "Do not share your password with anyone"
-                  }
                 />
               </Grid>
               <Grid item xl={12}>
                 <TextField
                   label="Title"
                   required
-                  value={value}
-                  onChange={(e) => setvalue(e.target.value)}
-                  helperText={
-                    !value
-                      ? "Required"
-                      : "Do not share your password with anyone"
-                  }
+                  
                 />
               </Grid>
               <Grid item xl={12}>
                 <TextField
                   label="Desc"
                   required
-                  value={value}
-                  onChange={(e) => setvalue(e.target.value)}
-                  //   error={!value}
-                  helperText={
-                    !value
-                      ? "Required"
-                      : "Do not share your password with anyone"
-                  }
+                 
                 />
               </Grid>
             </Grid>
