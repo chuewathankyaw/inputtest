@@ -1,5 +1,5 @@
 
-import { Box, Container, Grid, InputAdornment, Stack, TextField } from "@mui/material";
+import { Box, Container, Grid, InputAdornment, Stack, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import "./input.css"
 
@@ -10,9 +10,9 @@ export const Forminput = () => {
     return (
       <Box marginTop={5}>
         <div className="imput">
-          <Container >
-            <Grid container direction="row" spacing={4}>
-              <Grid item xl={12}>
+          <Container>
+            <Grid container direction="row" spacing={3}>
+              <Grid item xl={12} marginTop={2}>
                 <TextField
                   label="id"
                   required
@@ -56,6 +56,8 @@ export const Forminput = () => {
           </Container>
           <Stack direction="row" spacing={2}></Stack>
         </div>
+
+        <Button variant="contained" size="small" className="button">Contained</Button>
       </Box>
     );
 };
