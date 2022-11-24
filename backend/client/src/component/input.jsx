@@ -10,31 +10,27 @@ import {
 import { useState, useRef } from "react";
 import "./input.css";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { createPost } from "../features/posts/postSlice";
 
 export default function Forminput() {
-  const [value, setvalue] = useState("");
   const titleRef = useRef(null);
   const descRef = useRef(null);
-
+  const dispatch = useDispatch();
   const addPost = (e) => {
-    console.log("title is", titleRef.current.value);
-    console.log("description is", descRef.current.value);
     e.preventDefault();
-    if (
-      titleRef.current.value.length === 0 ||
-      descRef.current.value.length === 0
-    ) {
-      return alert("please fill all data");
-    }
+    // console.log("title is input data", titleRef.current.value);
+    // console.log("desc is data", descRef.current.value);
     const newObj = {
       title: titleRef.current.value,
       description: descRef.current.value,
     };
-    console.log("new input obj is", newObj);
-    axios.post("http://localhost:8800/api/post/", newObj);
 
     titleRef.current.value = "";
     descRef.current.value = "";
+
+    dispatch(createPost(newObj));
+    // axios.post("http://localhost:8800/api/post/", newObj);
   };
 
   return (
@@ -47,10 +43,26 @@ export default function Forminput() {
           <Container>
             <Grid container my={4} direction="row" spacing={4}>
               <Grid item xs={12}>
-                <TextField label="Title" required ref={titleRef} />
+                <TextField
+                  id="title"
+                  type="text"
+                  label="Title"
+                  name="title"
+                  required
+                  inputRef={titleRef}
+                  // onChange={onChange}
+                />
               </Grid>
               <Grid item xs={12}>
-                <TextField label="Desc" required ref={descRef} />
+                <TextField
+                  inputRef={descRef}
+                  id="description"
+                  type="text"
+                  label="Desc"
+                  required
+                  name="description"
+                  // onChange={onChange}
+                />
               </Grid>
             </Grid>
           </Container>
