@@ -15,7 +15,7 @@ function App() {
       console.log(message);
     }
     dispatch(getPost());
-  }, [posts.length]);
+  }, []);
   return (
     <div className="App">
       <Grid container my={2} sx={{ margin: "2rem" }}>

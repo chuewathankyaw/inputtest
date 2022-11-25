@@ -6,12 +6,12 @@ const createPost = async (req, res, next) => {
   try {
     const dataBuffer = fs.readFileSync(pathMain + "/" + "users.json");
     let dataJson = JSON.parse(dataBuffer.toString());
-
-    dataJson.push({
+    const result = {
       id: dataJson.length + 1,
       title: req.body.title,
       description: req.body.description,
-    });
+    };
+    dataJson.push(result);
     console.log("dat json", dataJson);
     fs.writeFile(
       pathMain + "/" + "users.json",
@@ -21,7 +21,7 @@ const createPost = async (req, res, next) => {
       }
     );
 
-    res.status(200).send("successfully created");
+    res.status(200).send(result);
   } catch (err) {
     res.status(401).json({ success: false, message: err });
   }
